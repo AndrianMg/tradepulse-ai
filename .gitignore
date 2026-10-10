@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+package-lock.json.bak
+
+# Build Output
+dist/
+build/
+
+# Environment Variables & Secrets (CRITICAL FOR SECURITY)
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
