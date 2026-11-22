@@ -30,3 +30,7 @@ jobs:
 
       - name: 🔍 TypeScript Compile & Typecheck
         run: npm run build
+
+      - name: 🧪 Run Automated Unit & Webhook Tests 
+        run: npm test
+        
