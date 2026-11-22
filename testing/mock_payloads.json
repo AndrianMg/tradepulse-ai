@@ -1,0 +1,102 @@
+{
+  "emergency_rm1": {
+    "message": {
+      "type": "end-of-call-report",
+      "call": {
+        "id": "call_vapi_romford_emergency_001",
+        "assistantId": "asst_vapi_romford_001",
+        "status": "completed",
+        "durationSeconds": 78,
+        "recordingUrl": "https://api.vapi.ai/recordings/call_vapi_romford_emergency_001.mp3",
+        "customer": {
+          "number": "+447700900123",
+          "name": "David Miller"
+        }
+      },
+      "analysis": {
+        "summary": "Customer has a burst main pipe under the kitchen sink with water flooding into hallway. Requires urgent immediate emergency callout.",
+        "structuredData": {
+          "caller_name": "David Miller",
+          "caller_phone": "+447700900123",
+          "emergency": true,
+          "issue_description": "Burst pipe under kitchen sink flooding ground floor",
+          "postcode": "RM1 4AU"
+        }
+      },
+      "transcript": "Assistant: Hello, thanks for calling Romford Emergency Plumbing & Heating. Debbie speaking. How can I help you today?\nCustomer: Hello, I have an urgent emergency! My main pipe under the kitchen sink has burst and water is pouring all over the floor!\nAssistant: Oh dear, don't worry Mr. Miller. Can I confirm your postcode in Romford?\nCustomer: It's RM1 4AU, near Romford station.\nAssistant: Got that. Turn off your stopcock if you can. I am paging our emergency engineer directly right now, he will call you back in five minutes."
+    }
+  },
+  "standard_rm5": {
+    "message": {
+      "type": "end-of-call-report",
+      "call": {
+        "id": "call_vapi_romford_standard_002",
+        "assistantId": "asst_vapi_romford_001",
+        "status": "completed",
+        "durationSeconds": 54,
+        "recordingUrl": "https://api.vapi.ai/recordings/call_vapi_romford_standard_002.mp3",
+        "customer": {
+          "number": "+447700900456",
+          "name": "Sarah Jenkins"
+        }
+      },
+      "analysis": {
+        "summary": "Customer requesting an annual boiler safety check and service. Non-urgent standard booking.",
+        "structuredData": {
+          "caller_name": "Sarah Jenkins",
+          "caller_phone": "+447700900456",
+          "emergency": false,
+          "issue_description": "Annual boiler service and gas safety certificate",
+          "postcode": "RM5 2TX"
+        }
+      },
+      "transcript": "Assistant: Hello, thanks for calling Romford Emergency Plumbing & Heating. Debbie speaking. How can I help you today?\nCustomer: Hi Debbie, I'm just calling to see if I can book an annual boiler service and safety check in Collier Row?\nAssistant: Of course, what is your postcode and name please?\nCustomer: It's Sarah Jenkins, RM5 2TX.\nAssistant: Wonderful Sarah, I've logged that. The engineer will ring you back this afternoon with available time slots."
+    }
+  },
+  "out_of_area_ig11": {
+    "message": {
+      "type": "end-of-call-report",
+      "call": {
+        "id": "call_vapi_romford_out_of_area_003",
+        "assistantId": "asst_vapi_romford_001",
+        "status": "completed",
+        "durationSeconds": 62,
+        "recordingUrl": "https://api.vapi.ai/recordings/call_vapi_romford_out_of_area_003.mp3",
+        "customer": {
+          "number": "+447700900789",
+          "name": "Marcus Reid"
+        }
+      },
+      "analysis": {
+        "summary": "Customer in Barking (IG11) with a leaking radiator. Postcode is outside core RM1-RM7 coverage.",
+        "structuredData": {
+          "caller_name": "Marcus Reid",
+          "caller_phone": "+447700900789",
+          "emergency": false,
+          "issue_description": "Leaking radiator valve in living room",
+          "postcode": "IG11 8TN"
+        }
+      },
+      "transcript": "Assistant: Hello, thanks for calling Romford Emergency Plumbing & Heating. Debbie speaking. How can I help you today?\nCustomer: Hi, I've got a radiator valve leaking in Barking. Postcode IG11 8TN.\nAssistant: We are based in Romford covering RM1 to RM7, but let me page the duty engineer to see if he can take a job in Barking."
+    }
+  },
+  "incomplete_transcript_fallback": {
+    "message": {
+      "type": "end-of-call-report",
+      "call": {
+        "id": "call_vapi_romford_incomplete_004",
+        "assistantId": "asst_vapi_romford_001",
+        "status": "completed",
+        "durationSeconds": 15,
+        "recordingUrl": "https://api.vapi.ai/recordings/call_vapi_romford_incomplete_004.mp3",
+        "customer": {
+          "number": "+447700900999"
+        }
+      },
+      "analysis": {
+        "summary": "Customer disconnected after stating they have an emergency leak in Harold Wood."
+      },
+      "transcript": "Assistant: Hello, thanks for calling Romford Emergency Plumbing & Heating. Debbie speaking.\nCustomer: Help, there's water coming through my ceiling in Harold Wood!\n[Call disconnected]"
+    }
+  }
+}
