@@ -114,7 +114,17 @@ async function runTestSuite() {
     assert.ok(msg.includes('[STANDARD]'));
     assert.ok(msg.includes('Location: RM5 2TX.'));
   });
-
+  test('Does not double the full stop after the issue summary', () => {
+    const body = buildAlertMessageBody({
+      isEmergency: false,
+      callerName: 'Test Caller',
+      callerPhone: '+447700900111',
+      issueSummary: 'Leaking pipe in Harold Wood.',
+      postcode: 'RM3',
+    });
+    assert.ok(body.includes('Issue: Leaking pipe in Harold Wood. Location:'));
+    assert.ok(!body.includes('..'));
+  });
   test('Normalizes UK phone numbers to E.164 (+44)', () => {
     assert.equal(formatE164UK('07911123456'), '+447911123456');
     assert.equal(formatE164UK('+447911123456'), '+447911123456');
@@ -193,6 +203,8 @@ async function runTestSuite() {
     assert.equal(body.status, 'success');
     // Harold Wood was in the transcript, so it captures RM3
     assert.equal(body.postcode, 'RM3');
+    // Caller said "emergency" before the line dropped, so it must not be downgraded
+    assert.equal(body.emergency, true);
     assert.equal(body.inCoverage, true);
     assert.equal(body.smsDispatched, true);
   });
