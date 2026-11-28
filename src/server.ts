@@ -184,6 +184,17 @@ app.post('/api/vapi/webhook', async (request: FastifyRequest, reply: FastifyRepl
     }
   }
 
+   // Vapi sends several message types to the server URL (status-update, transcript, hang...).
+  // Only the end-of-call report describes a finished call, so acknowledge the rest and stop.
+  // Returning 200 stops Vapi from retrying them.
+  const vapiMessageType = (rawBody as any)?.message?.type;
+  if (vapiMessageType && vapiMessageType !== 'end-of-call-report') {
+    return reply.status(200).send({
+      status: 'ignored',
+      reason: `Unhandled Vapi message type: ${vapiMessageType}`,
+    });
+  }
+
   // Extract structured triage fields
   const triage = extractTriageData(rawBody);
 
