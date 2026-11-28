@@ -208,7 +208,24 @@ async function runTestSuite() {
     assert.equal(body.inCoverage, true);
     assert.equal(body.smsDispatched, true);
   });
+  await asyncTest('Ignores Vapi messages that are not end-of-call reports', async () => {
+    const response = await app.inject({
+      method: 'POST',
+      url: '/api/vapi/webhook',
+      payload: {
+        message: {
+          type: 'status-update',
+          status: 'in-progress',
+          call: { id: 'call_vapi_status_005', assistantId: 'asst_vapi_romford_001' },
+        },
+      },
+    });
 
+    assert.equal(response.statusCode, 200);
+    const body = JSON.parse(response.payload);
+    assert.equal(body.status, 'ignored');
+    assert.equal(body.smsDispatched, undefined);
+  });
   console.log('\n======================================================================');
   console.log(`🏁 Test Results: ${passed} passed, ${failed} failed`);
   console.log('======================================================================');
