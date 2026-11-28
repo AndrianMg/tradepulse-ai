@@ -37,7 +37,7 @@ export const VapiEndOfCallPayloadSchema = z.object({
     analysis: z
       .object({
         summary: z.string().optional(),
-        structuredData: z.record(z.any()).optional(),
+        structuredData: z.record(z.string(), z.any()).optional(),
         successEvaluation: z.union([z.boolean(), z.string()]).optional(),
       })
       .optional(),
@@ -64,7 +64,7 @@ export const RetellCallEndedPayloadSchema = z.object({
     call_analysis: z
       .object({
         call_summary: z.string().optional(),
-        custom_analysis_data: z.record(z.any()).optional(),
+        custom_analysis_data: z.record(z.string(), z.any()).optional(),
       })
       .optional(),
   }),
