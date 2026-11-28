@@ -49,7 +49,8 @@ export function buildAlertMessageBody(params: {
   const name = params.callerName.trim() || 'Caller';
   const rawPhone = params.callerPhone.trim();
   const e164Phone = formatE164UK(rawPhone);
-  const summary = params.issueSummary.trim() || 'Urgent callback requested';
+    // Strip trailing punctuation: the template adds its own full stop after the summary
+  const summary = (params.issueSummary.trim() || 'Urgent callback requested').replace(/[.!?\s]+$/, '');
   const location = params.postcode.trim() || 'RM Area Unconfirmed';
 
   // Format clickable tel link

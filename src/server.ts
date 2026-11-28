@@ -35,7 +35,18 @@ app.get('/health', async () => {
 app.get('/api/vapi/webhook', async () => {
   return { status: 'ready', endpoint: 'TradePulse AI Vapi/Retell Webhook' };
 });
+// Words that suggest an emergency, used only when the agent did not capture the emergency flag
+// (for example, the caller hung up or the line dropped). Leaning towards EMERGENCY is deliberate:
+// a false alarm costs a phone call, a missed emergency costs a flooded house.
+const EMERGENCY_HINTS =
+  /\b(emergency|urgent|burst|flood(?:ing|ed)?|leak(?:ing)?|gas (?:leak|smell)|smell (?:of )?gas|water (?:coming|pouring) through|no heat(?:ing)?|sparking)\b/i;
 
+function resolveEmergency(flag: unknown, ...context: (string | undefined)[]): boolean {
+  if (flag !== undefined && flag !== null && flag !== '') {
+    return flag === true || flag === 'true' || flag === 'yes';
+  }
+  return EMERGENCY_HINTS.test(context.filter(Boolean).join(' '));
+}
 /**
  * Normalizes incoming payload from Vapi or Retell into a clean internal triage structure
  */
@@ -56,11 +67,7 @@ function extractTriageData(body: any): NormalizedTriageResult | null {
       call.customer?.name ||
       'Caller (Name uncaptured)';
 
-    const isEmergency =
-      structured.emergency === true ||
-      structured.emergency === 'true' ||
-      structured.emergency === 'yes' ||
-      false;
+    const isEmergency = resolveEmergency(structured.emergency, analysis?.summary, transcript);
 
     const issueDescription =
       structured.issue_description ||
@@ -100,7 +107,11 @@ function extractTriageData(body: any): NormalizedTriageResult | null {
 
     const callerPhone = custom.caller_phone || call.from_number || '';
     const callerName = custom.caller_name || 'Caller (Name uncaptured)';
-    const isEmergency = custom.emergency === true || custom.emergency === 'true' || false;
+     const isEmergency = resolveEmergency(
+      custom.emergency,
+      call.call_analysis?.call_summary,
+      call.transcript,
+    );
     const issueDescription =
       custom.issue_description ||
       call.call_analysis?.call_summary ||
