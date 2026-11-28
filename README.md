@@ -1,12 +1,12 @@
 # 🚨 TradePulse AI
 
-[![CI Pipeline](https://github.com/USER/tradepulse-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/USER/tradepulse-ai/actions)
+[![CI Pipeline](https://github.com/AndrianMg/tradepulse-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/AndrianMg/tradepulse-ai/actions)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?logo=typescript)
 ![Node.js](https://img.shields.io/badge/Node.js-22+-green?logo=node.js)
 ![Fastify](https://img.shields.io/badge/Fastify-4.28-black?logo=fastify)
 ![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase)
 ![Twilio](https://img.shields.io/badge/Twilio-Programmable%20SMS-F22F46?logo=twilio)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![License](https://img.shields.io/badge/license-All%20rights%20reserved-red.svg)
 
 > **Automated Inbound Voice Triage & Emergency Lead Recovery System for Romford Trade Contractors (RM1–RM7)**
 
@@ -75,4 +75,4 @@ Database tables, Row-Level Security policies, and 30-day automated log retention
 ---
 
 ## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Copyright (c) 2026 Andrei Murug. All rights reserved. This code is shared for portfolio purposes only and may not be copied or reused without permission. See [LICENSE](LICENSE) for details.
